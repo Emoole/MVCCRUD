@@ -1,0 +1,43 @@
+﻿@model List<AlumnosModel>
+@{
+    ViewData["Title"] = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <h5 class="card-header">Alumnos</h5>
+    <div class="card-body">
+        <a asp-action="Guardar" asp-controller="Mantenedor" class="btn btn-success"><i class="bi bi-plus-circle"></i> Crear Nuevo</a>
+        <hr /> 
+        <table class="table table-bordered">
+             <thead>
+                 <tr>
+                     <th>Nombres</th>
+                     <th>Apellidos</th>
+                     <th>Genero</th>
+                     <th>Fecha Registro</th>
+                     <th></th>
+                 </tr>
+             </thead>
+             <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nombres</td>
+                        <td>@item.Apellidos</td>
+                        <td>@item.Genero</td>
+                        <td>@item.FechaRegistro</td>
+                        <td>
+                            <a asp-action="Editar" asp-controller="Mantenedor" class="btn btn-success" asp-route-Id="@item.Id"><i class="bi bi-pencil-fill"></i> Editar</a>
+                        </td>
+                        <td>
+                            <a asp-action="Eliminar" asp-controller="Mantenedor" class="btn btn-danger" asp-route-Id="@item.Id"><i class="bi bi-trash3-fill"></i> Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
